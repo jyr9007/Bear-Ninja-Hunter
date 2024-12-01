@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bear Ninja Hunter</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bear Ninja Hunter</title>
 </head>
 <body>
-    <h1>Bear Ninja Hunter Game</h1>
-    <p id="game-output">The game output will be displayed here!</p>
-    <script src="js/script.js"></script>
+  <script>
+    // Prompt the user for their name
+    let username = prompt('Welcome to Bear Ninja Hunter! What is your name?');
+    let player = `${username}`;
+
+    // Greet the player
+    alert('Hi ' + player + '! Let\'s Play!!');
+
+    // Player makes a choice
+    let playerChoice = prompt('Which one are you choosing? Bear, Ninja, or Hunter?');
+    let choices = ['Bear', 'Ninja', 'Hunter'];
+
+    // Computer makes a random choice
+    let computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+    // Show results
+    alert(player + ', You picked ' + playerChoice + '!');
+    alert('The computer picked ' + computerChoice + '!');
+
+    // Determine the winner
+    function determineWinner(playerChoice, computerChoice) {
+      if (playerChoice === computerChoice) {
+        return 'It\'s a draw!';
+      } else if (
+        (playerChoice === 'Bear' && computerChoice === 'Ninja') ||
+        (playerChoice === 'Ninja' && computerChoice === 'Hunter') ||
+        (playerChoice === 'Hunter' && computerChoice === 'Bear')
+      ) {
+        return 'You win!';
+      } else {
+        return 'The computer wins!';
+      }
+    }
+
+    let result = determineWinner(playerChoice, computerChoice);
+
+    // Display the winner
+    alert(result);
+  </script>
 </body>
 </html>
