@@ -6,7 +6,7 @@ alert("Hi " + playerName + "! Let's Play!");
 
 //  Prompt the player for their choice
 let playerChoice = prompt(
-    "Which one are you choosing? Bear 🐻, Ninja 🥷, or Hunter 🔫?"
+    "Which one are you choosing? Bear, Ninja, or Hunter?"
 );
 
 // Hard-code the computer's choice
