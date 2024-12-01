@@ -1,3 +1,15 @@
-.wow {
-  width: 100px;
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+#game-output {
+    font-size: 1.2em;
+    color: #555;
 }
