@@ -9,7 +9,7 @@ let computerWins = 0;
 // Main game loop
 let playGame = true;
 while (playGame) {
-    // Prompt for player name
+    // Step 1: Prompt for player name
     const playerName = prompt("Welcome to Bear Ninja Hunter! What is your name?");
     if (!playerName) {
         alert("Please enter your name to play!");
@@ -17,31 +17,31 @@ while (playGame) {
     }
     alert(`Hi ${playerName}! Let's Play!`);
 
-    //Prompt for player choice
-    let playerChoice = prompt("Which one are you choosing? Bear , Ninja , or Hunter ?");
+    // Step 2: Prompt for player choice
+    let playerChoice = prompt("Which one are you choosing? Bear 🐻, Ninja 🥷, or Hunter 🔫?");
     if (playerChoice === null) {
         alert("You cancelled the game. Thanks for visiting!");
         playGame = false;
         break;
     }
 
-    // Standardize player input 
+    // Step 3: Standardize player input (Forced Case)
     playerChoice = playerChoice.trim().charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
     if (!choices.includes(playerChoice)) {
         alert(`Invalid choice! Please choose one of the following: ${choices.join(", ")}.`);
         continue; // Restart loop if input is invalid
     }
 
-    //Randomize computer choice
+    // Step 4: Randomize computer choice
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-    //  Countdown from 3 to 0
+    // Step 5: Countdown from 3 to 0
     console.log("Countdown:");
     for (let i = 3; i >= 0; i--) {
         console.log(i); // Display countdown in the console
     }
 
-    // Compare player and computer choices
+    // Step 6: Compare player and computer choices
     let resultMessage = "";
     if (playerChoice === computerChoice) {
         resultMessage = `It's a tie! You both chose ${playerChoice}.`;
@@ -57,20 +57,20 @@ while (playGame) {
         computerWins++;
     }
 
-    //  Update game statistics
+    // Step 7: Update game statistics
     gamesPlayed++;
 
-    //  Display results
+    // Step 8: Display results
     document.getElementById("welcome-message").textContent = `Welcome, ${playerName}!`;
     document.getElementById("game-result").textContent = resultMessage;
     document.getElementById("stats").textContent = `Games Played: ${gamesPlayed}, Player Wins: ${playerWins}, Computer Wins: ${computerWins}`;
     console.log(resultMessage);
     console.log(`Games Played: ${gamesPlayed}, Player Wins: ${playerWins}, Computer Wins: ${computerWins}`);
 
-    // Ask player if they want to play again
+    // Step 9: Ask player if they want to play again
     const playAgain = prompt("Do you want to play again? (yes or no)").toLowerCase();
     if (playAgain !== "yes") {
-        alert("Thanks for playing!");
+        alert("Thanks for playing! See you next time!");
         playGame = false;
     }
 }
