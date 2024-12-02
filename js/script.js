@@ -37,7 +37,7 @@ while (playGame) {
     alert(`Hi ${playerName}! Let's Play!`);
 
     // Step 2: Prompt for player choice
-    let playerChoice = prompt("Which one are you choosing? Bear 🐻, Ninja 🥷, or Hunter 🔫?");
+    let playerChoice = prompt("Which one are you choosing? Bear , Ninja , or Hunter ?");
     if (playerChoice === null) {
         alert("You cancelled the game. Thanks for visiting!");
         playGame = false;
