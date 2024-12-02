@@ -6,6 +6,25 @@ let gamesPlayed = 0;
 let playerWins = 0;
 let computerWins = 0;
 
+// Function to display countdown
+function displayCountdown(callback) {
+    const countdownElement = document.getElementById("countdown");
+    let count = 3;
+
+    const interval = setInterval(() => {
+        console.log(count); // Log countdown in the console
+        countdownElement.textContent = count; // Display countdown on the page
+
+        count--;
+
+        if (count < 0) {
+            clearInterval(interval); // Stop the countdown
+            countdownElement.textContent = ""; // Clear countdown display
+            callback(); // Proceed to show game results
+        }
+    }, 1000); // 1-second interval
+}
+
 // Main game loop
 let playGame = true;
 while (playGame) {
@@ -35,39 +54,36 @@ while (playGame) {
     // Step 4: Randomize computer choice
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-    // Step 5: Countdown from 3 to 0
-    console.log("Countdown:");
-    for (let i = 3; i >= 0; i--) {
-        console.log(i); // Display countdown in the console
-    }
+    // Step 5: Countdown and display results
+    displayCountdown(() => {
+        // Compare player and computer choices
+        let resultMessage = "";
+        if (playerChoice === computerChoice) {
+            resultMessage = `It's a tie! You both chose ${playerChoice}.`;
+        } else if (
+            (playerChoice === "Bear" && computerChoice === "Ninja") ||
+            (playerChoice === "Ninja" && computerChoice === "Hunter") ||
+            (playerChoice === "Hunter" && computerChoice === "Bear")
+        ) {
+            resultMessage = `Congratulations, ${playerName}! You win! ${playerChoice} beats ${computerChoice}.`;
+            playerWins++;
+        } else {
+            resultMessage = `Sorry, ${playerName}. You lose! ${computerChoice} beats ${playerChoice}.`;
+            computerWins++;
+        }
 
-    // Step 6: Compare player and computer choices
-    let resultMessage = "";
-    if (playerChoice === computerChoice) {
-        resultMessage = `It's a tie! You both chose ${playerChoice}.`;
-    } else if (
-        (playerChoice === "Bear" && computerChoice === "Ninja") ||
-        (playerChoice === "Ninja" && computerChoice === "Hunter") ||
-        (playerChoice === "Hunter" && computerChoice === "Bear")
-    ) {
-        resultMessage = `Congratulations, ${playerName}! You win! ${playerChoice} beats ${computerChoice}.`;
-        playerWins++;
-    } else {
-        resultMessage = `Sorry, ${playerName}. You lose! ${computerChoice} beats ${playerChoice}.`;
-        computerWins++;
-    }
+        // Update game statistics
+        gamesPlayed++;
 
-    // Step 7: Update game statistics
-    gamesPlayed++;
+        // Display results
+        document.getElementById("welcome-message").textContent = `Welcome, ${playerName}!`;
+        document.getElementById("game-result").textContent = resultMessage;
+        document.getElementById("stats").textContent = `Games Played: ${gamesPlayed}, Player Wins: ${playerWins}, Computer Wins: ${computerWins}`;
+        console.log(resultMessage);
+        console.log(`Games Played: ${gamesPlayed}, Player Wins: ${playerWins}, Computer Wins: ${computerWins}`);
+    });
 
-    // Step 8: Display results
-    document.getElementById("welcome-message").textContent = `Welcome, ${playerName}!`;
-    document.getElementById("game-result").textContent = resultMessage;
-    document.getElementById("stats").textContent = `Games Played: ${gamesPlayed}, Player Wins: ${playerWins}, Computer Wins: ${computerWins}`;
-    console.log(resultMessage);
-    console.log(`Games Played: ${gamesPlayed}, Player Wins: ${playerWins}, Computer Wins: ${computerWins}`);
-
-    // Step 9: Ask player if they want to play again
+    // Ask if the player wants to play again
     const playAgain = prompt("Do you want to play again? (yes or no)").toLowerCase();
     if (playAgain !== "yes") {
         alert("Thanks for playing! See you next time!");
