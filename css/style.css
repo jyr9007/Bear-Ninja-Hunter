@@ -1,3 +1,40 @@
-.wow {
-  width: 100px;
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(120deg, #74ebd5, #acb6e5);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 48px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+}
+
+#game-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#countdown {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff5722;
+    margin-top: 10px;
+}
+
+#game-result, #stats {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4caf50;
 }
